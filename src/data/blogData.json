@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "The Future of Ethical Hacking",
+        "excerpt": "Exploring the next generation of security tools and mindset in an AI-driven world.",
+        "content": "<p>Ethical hacking is evolving. In a world where AI is becoming the norm, security professionals must adapt. The tools are getting smarter, but so are the attackers.</p><h3>1. AI-Powered Reconnaissance</h3><p>Traditional scanning is being replaced by intelligent discovery tools that can predict vulnerabilities before they are even exposed.</p><h3>2. Automation in Remediation</h3><p>The gap between detection and patching is closing. Automated systems can now detect and neutralize threats in real-time.</p><p>Conclusion: The mindset of an ethical hacker remains their most valuable tool—curiosity, persistence, and strategic thinking.</p>",
+        "date": "Dec 15, 2024",
+        "category": "Security",
+        "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "id": 2,
+        "title": "Mastering React Performance",
+        "excerpt": "Deep dive into memoization, virtualization, and advanced optimization techniques.",
+        "content": "<p>React is fast by default, but complex applications can slow down without proper care. Optimization is an iterative process.</p><h3>UseMemo vs UseCallback</h3><p>Understanding when to cache calculations versus when to cache function references is critical for preventing unnecessary re-renders.</p><h3>Virtualization</h3><p>For large lists, only rendering what is visible can drastically improve frame rates and memory usage.</p>",
+        "date": "Dec 10, 2024",
+        "category": "Development",
+        "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1200&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        "id": 3,
+        "title": "Unreal Engine 5: Beyond Games",
+        "excerpt": "How real-time rendering is transforming architectural visualization and film production.",
+        "content": "<p>Lumen and Nanite have changed the game, but not just for players. Hollywood and architects are taking notice.</p><h3>Real-time Film Production</h3><p>The 'volume' is replacing green screens, allowing actors to see the world they are performing in.</p><h3>Interactive Architecture</h3><p>Walk through a building before it's even built with photorealistic quality.</p>",
+        "date": "Dec 05, 2024",
+        "category": "Game Dev",
+        "image": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=1200&q=80",
+        "thumbnail": "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=800&q=80"
+    }
+]
