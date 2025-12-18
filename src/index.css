@@ -771,26 +771,102 @@ footer {
 .blog-post-body {
   max-width: 800px;
   margin: 0 auto;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
-  font-family: 'Inter', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.blog-post-body h2 {
+  font-size: 2.2rem;
+  margin: 4rem 0 1.5rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .blog-post-body h3 {
-  font-size: 2rem;
-  margin: 3rem 0 1.5rem;
+  font-size: 1.6rem;
+  margin: 2.5rem 0 1rem;
   color: white;
   font-weight: 600;
 }
 
 .blog-post-body p {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-body strong {
+  color: white;
+  font-weight: 600;
+}
+
+.blog-post-body ul,
+.blog-post-body ol {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.blog-post-body li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.blog-post-body ul li::before {
+  content: "•";
+  color: #60a5fa;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.blog-post-body pre {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.blog-post-body code {
+  background: rgba(96, 165, 250, 0.1);
+  color: #60a5fa;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.9em;
+}
+
+.blog-post-body pre code {
+  background: none;
+  color: #e2e8f0;
+  padding: 0;
+  font-size: inherit;
+}
+
+.blog-post-body blockquote {
+  border-left: 4px solid #60a5fa;
+  padding: 1rem 1.5rem;
+  margin: 2.5rem 0;
+  background: rgba(96, 165, 250, 0.05);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.blog-post-body hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 4rem 0;
 }
 
 @media (max-width: 1024px) {
   .blog-post-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 }
 
@@ -802,29 +878,23 @@ footer {
 
   .blog-post-hero {
     height: 35vh;
-    /* Reduced height on mobile */
     margin-bottom: 1.5rem;
   }
 
   .blog-post-title {
-    font-size: 2rem;
-    /* Scaled down title */
+    font-size: 2.2rem;
     margin-bottom: 1.5rem;
   }
 
   .blog-post-meta {
     flex-wrap: wrap;
-    /* Allow meta info to wrap on small screens */
     gap: 1rem;
     font-size: 0.9rem;
   }
 
   .blog-post-body {
     font-size: 1.05rem;
-    /* Slightly smaller text for readability */
     line-height: 1.7;
-    padding: 0 10px;
-    /* Slight horizontal padding */
   }
 
   .blog-post-header {

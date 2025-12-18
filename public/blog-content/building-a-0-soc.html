@@ -1,0 +1,240 @@
+<h2>What Is a SIEM Tool?</h2>
+
+<p>
+    A <strong>SIEM</strong> (Security Information and Event Management) tool is a
+    centralized security platform used to
+    <strong>collect, analyse, and correlate logs</strong>
+    from across an organisation’s IT environment.
+</p>
+
+<p>
+    SIEM tools aggregate data from servers, endpoints, network devices,
+    firewalls, applications, and cloud services,
+    then turn that raw data into
+    <strong>security alerts, dashboards, and investigations</strong>.
+</p>
+
+<p>
+    In a traditional Security Operations Center (SOC),
+    SIEM tools act as the
+    <strong>single source of truth</strong> for detecting,
+    investigating, and responding to security incidents.
+</p>
+
+<h3>What Do SIEM Tools Actually Do?</h3>
+
+<ul>
+    <li>Collect logs from multiple systems in real time</li>
+    <li>Normalize and correlate security events</li>
+    <li>Detect suspicious behaviour and known attack patterns</li>
+    <li>Generate alerts for SOC analysts</li>
+    <li>Provide dashboards and reports for visibility and compliance</li>
+</ul>
+
+<h3>Common SIEM Tools</h3>
+
+<ul>
+    <li>Splunk Enterprise Security</li>
+    <li>IBM QRadar</li>
+    <li>Microsoft Sentinel</li>
+    <li>Elastic SIEM</li>
+</ul>
+
+<p>
+    While these tools are powerful, they are often
+    <strong>expensive to license, complex to maintain,
+        and resource-heavy</strong> - especially for students,
+    startups, and small organisations.
+</p>
+
+<p>
+    This is where open-source platforms like
+    <strong>Wazuh</strong> change the game.
+</p>
+
+<hr />
+<h2>Why This Matters</h2>
+<p>Security Operations Centers (SOCs) are often associated with expensive SIEM tools like Splunk, QRadar, or Sentinel
+    licenses that can cost <strong>thousands per month</strong>. For students, startups, indie hackers, and small
+    organisations, that price tag is unrealistic.</p>
+<p>The good news? In 2025, you can build a <strong>fully functional SOC at $0 cost</strong> using <strong>open-source
+        tools</strong>, cloud free tiers, and a bit of creativity.</p>
+<p>In this tutorial, I’ll show you how to:</p>
+<ul>
+    <li>Deploy a <strong>Wazuh-based SOC</strong> on a simple Linux server</li>
+    <li>Turn Wazuh into a <strong>practical SIEM + EDR platform</strong></li>
+    <li>Add a <strong>2025 twist</strong>: integrate a <strong>local LLM (Llama)</strong> to automatically explain
+        security logs</li>
+    <li>Create a <strong>custom dashboard</strong> to monitor <strong>Spam Quarantine vulnerabilities</strong></li>
+</ul>
+<p>This guide is beginner-friendly but realistic enough to be useful in real SOC environments.</p>
+<hr />
+<h2>What Is Wazuh (And Why It’s Perfect for a $0 SOC)?</h2>
+<p>Wazuh is an <strong>open-source security platform</strong> that combines:</p>
+<ul>
+    <li>Log analysis (SIEM-like)</li>
+    <li>Host-based intrusion detection (HIDS)</li>
+    <li>Endpoint detection &amp; response (EDR)</li>
+    <li>File integrity monitoring</li>
+    <li>Vulnerability detection</li>
+    <li>Compliance monitoring</li>
+</ul>
+<p>All without license fees.</p>
+<p>At its core, Wazuh consists of:</p>
+<ul>
+    <li><strong>Wazuh Manager</strong> – collects and analyses security data</li>
+    <li><strong>Wazuh Agents</strong> – installed on endpoints (Linux, Windows, macOS)</li>
+    <li><strong>OpenSearch + Dashboard</strong> – for searching logs and visualisation</li>
+</ul>
+<p>This makes it an ideal foundation for a <strong>budget SOC</strong>.</p>
+<hr />
+<h2>Architecture: Our $0 SOC Setup</h2>
+<p><strong>Minimum setup:</strong></p>
+<ul>
+    <li>1 × Linux VM (Ubuntu 24.04 or later version recommended)</li>
+    <li>1–3 endpoints with Wazuh agents</li>
+    <li>Open-source LLM running locally</li>
+    <li>Browser access to the Wazuh Dashboard</li>
+</ul>
+<pre>Endpoints → Wazuh Agent → Wazuh Manager → OpenSearch → Dashboard
+                                       ↓
+                               Local LLM (Log Explanation)</pre>
+<hr />
+<h2>Step 1: Deploy the Wazuh Manager</h2>
+<h3>Requirements</h3>
+<ul>
+    <li>Ubuntu 24.04 LTS or later version</li>
+    <li>2 CPU cores</li>
+    <li>4 GB RAM (minimum)</li>
+    <li>30 GB disk</li>
+</ul>
+<h3>Installation</h3>
+<p>Update the system:</p>
+<pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+<p>Install Wazuh using the official installer:</p>
+<pre><code>curl -sO https://packages.wazuh.com/4.14/wazuh-install.sh && 
+sudo bash ./wazuh-install.sh -a</code></pre>
+<p>This installs:</p>
+<ul>
+    <li>Wazuh Manager</li>
+    <li>OpenSearch</li>
+    <li>Wazuh Dashboard</li>
+</ul>
+<p>After completion, you’ll receive:</p>
+<ul>
+    <li>Dashboard URL</li>
+    <li>Admin username</li>
+    <li>Generated password</li>
+</ul>
+<p>Access it via browser:</p>
+<pre><code>https://&lt;SERVER-IP&gt;</code></pre>
+<p>🎉 You now have a working SOC platform.</p>
+<hr />
+<h2>Step 2: Add Endpoints (Agents)</h2>
+<p>On any Linux endpoint:</p>
+<pre><code>curl -sO https://packages.wazuh.com/4.x/wazuh-agent.sh 
+sudo bash wazuh-agent.sh</code></pre>
+<p>Configure the agent to point to your Wazuh Manager IP and start it:</p>
+<pre><code>sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent</code></pre>
+<p>Within minutes, logs and security events will appear in the dashboard.</p>
+<hr />
+<h2>Step 3: Turning Logs into Plain English with a Local LLM (2025 Twist)</h2>
+<h3>The Problem</h3>
+<p>SOC analysts spend <strong>too much time reading cryptic logs</strong> like:</p>
+<pre><code>Dec 12 sshd[4211]: Failed password for invalid user admin from 185.231.x.x</code></pre>
+<p>Beginners struggle to understand:</p>
+<ul>
+    <li>What happened?</li>
+    <li>Is it dangerous?</li>
+    <li>What should I do?</li>
+</ul>
+<h3>The Solution: Local LLM Log Explanation</h3>
+<p>Instead of sending logs to cloud AI services, we use a <strong>local LLM</strong> for:</p>
+<ul>
+    <li>Privacy</li>
+    <li>Cost control</li>
+    <li>Offline analysis</li>
+</ul>
+<h3>Tooling</h3>
+<ul>
+    <li><strong>Ollama</strong></li>
+    <li><strong>Llama (local model)</strong></li>
+    <li>Simple Python integration</li>
+</ul>
+<h3>Setup Ollama</h3>
+<pre><code>curl -fsSL https://ollama.com/install.sh | sh</code></pre>
+<pre><code>ollama pull llama3</code></pre>
+<h3>Python Log Explainer (Example)</h3>
+<pre><code>import requests
+
+def explain_log(log):
+    payload = {
+        "model": "llama3",
+        "prompt": f"Explain this security log in simple SOC terms:\n{log}"
+    }
+    r = requests.post("http://localhost:11434/api/generate", json=payload)
+    return r.json()["response"]
+
+log = "Failed SSH login attempt from external IP"
+print(explain_log(log))</code></pre>
+
+<h3>What this code actually does:</h3>
+<pre><code>
+Wazuh → generates security logs
+        ↓
+Python script → sends log text
+        ↓
+Local LLM (Llama) → explains it
+</code></pre>
+<blockquote>“This log indicates a brute-force login attempt over SSH. The source IP is external and may indicate an
+    attacker testing credentials.”</blockquote>
+<p>Now your SOC doesn’t just <em>collect logs</em> — it <strong>understands them</strong>.</p>
+<hr />
+<h2>Step 4: Monitoring Spam Quarantine Vulnerabilities</h2>
+<h3>Why Spam Quarantine?</h3>
+<p>Email security issues remain a <strong>top attack vector</strong> in 2025.</p>
+<ul>
+    <li>Misconfigured spam quarantine systems</li>
+    <li>Attackers bypassing filters</li>
+    <li>Malicious attachments slipping through</li>
+</ul>
+<h3>What We Monitor in Wazuh</h3>
+<ul>
+    <li>Mail server logs (Postfix / Exchange / SMTP gateways)</li>
+    <li>Quarantine release events</li>
+    <li>Suspicious attachment types</li>
+    <li>High-volume spam from single IPs</li>
+</ul>
+<h3>Custom Wazuh Rule (Example)</h3>
+<pre><code>&lt;rule id="100500" level="10"&gt;
+  &lt;if_matched_sid&gt;postfix&lt;/if_matched_sid&gt;
+  &lt;description&gt;Suspicious spam quarantine activity detected&lt;/description&gt;
+  &lt;mitre&gt;T1566&lt;/mitre&gt;
+&lt;/rule&gt;</code></pre>
+<hr />
+<h2>Step 5: Building a Custom Dashboard</h2>
+<p>In <strong>Wazuh Dashboard → Discover / Visualize</strong>, create panels for:</p>
+<ul>
+    <li>Quarantined emails per hour</li>
+    <li>Top sender IPs</li>
+    <li>Attachment types (.zip, .html, .iso)</li>
+    <li>Quarantine release actions</li>
+</ul>
+<blockquote>“Why were 200 emails released from quarantine in 10 minutes?”</blockquote>
+<p>This is how you move from <strong>logs → insight → investigation</strong>.</p>
+<hr />
+<h2>What You’ve Built </h2>
+<ul>
+    <li>A functioning SOC platform</li>
+    <li>SIEM + EDR capabilities </li>
+    <li>Endpoint monitoring</li>
+    <li>Vulnerability visibility</li>
+    <li>AI-assisted log explanation</li>
+    <li>Real-world email security monitoring</li>
+</ul>
+<hr />
+<h2>Final Thoughts</h2>
+<p>Cybersecurity shouldn’t be locked behind expensive tools.</p>
+<p>If you’re learning cybersecurity in 2025 - you don’t need Splunk. You need <strong>curiosity, practice, and the right
+        tools</strong>.</p>
