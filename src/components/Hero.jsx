@@ -12,7 +12,7 @@ const Hero = () => {
                 <div className="hero-content">
                     <div className="hero-text">
                         <Typewriter text="Hi,I'm Supun Hasanka" delay={100} />
-                        <h1 className="hero-title">Software engineer,<br /><span className="gradient-text">Ethical hacker</span></h1>
+                        <h1 className="hero-title">Software engineer,<br /><span className="gradient-text">Cybersecurity Analyst</span></h1>
                         <p className="hero-subtitle">
                             I made things, I break things, I fix things.
                         </p>
