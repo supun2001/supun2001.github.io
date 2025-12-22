@@ -14,7 +14,7 @@
         "title": "Writing High-Fidelity YARA Rules for AI-Era Ransomware (2025)",
         "excerpt": "Traditional hash-based malware detection no longer works in 2025. This article explains how to write high-fidelity YARA rules that detect malware capabilities instead of static signatures, using a real-world case study of the AquaShell backdoor linked to recent Cisco-related attacks. Learn how modern SOC teams adapt YARA for AI-driven, polymorphic threats.",
         "contentFile": "/blog-content/yara.html",
-        "date": "Dec 18, 2025",
+        "date": "Dec 22, 2025",
         "category": "Cybersecurity",
         "image": "/assets/images/id2.png",
         "thumbnail": "/assets/thumbnails/id2.png"
