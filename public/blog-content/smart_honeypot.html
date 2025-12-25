@@ -1,0 +1,511 @@
+<h2>Why Blocking Attackers Is No Longer Enough in 2025</h2>
+
+<p>
+    For a long time, cybersecurity focused on one simple idea:
+    <strong>block the attacker as fast as possible</strong>.
+</p>
+
+<p>
+    Firewalls, EDRs, and SIEM platforms are all built around this mindset,
+    detect suspicious activity, raise an alert, and shut it down.
+</p>
+
+<p>
+    That approach still matters. But in 2025, the reality has changed.
+</p>
+
+<p>
+    Modern attackers are:
+</p>
+
+<ul>
+    <li>Highly automated</li>
+    <li>Patient and persistent</li>
+    <li>AI-assisted</li>
+    <li>Scanning thousands of systems simultaneously</li>
+</ul>
+
+<p>
+    Blocking them is necessary, but on its own, it’s no longer enough.
+</p>
+
+<p>
+    This is where <strong>Deception Engineering</strong> becomes powerful.
+</p>
+
+<hr />
+
+<h2>What Is Deception Engineering?</h2>
+
+<p>
+    Deception Engineering is the practice of
+    <strong>intentionally deploying fake assets</strong>
+    inside your environment to lure attackers.
+</p>
+
+<p>
+    The goal isn’t to stop them immediately, it’s to:
+</p>
+
+<ul>
+    <li>Detect intrusions early</li>
+    <li>Waste attacker time and effort</li>
+    <li>Collect high-quality threat intelligence</li>
+    <li>Protect real systems from being touched</li>
+</ul>
+
+<p>
+    Instead of asking:
+    <em>“How do we block everything?”</em>
+</p>
+
+<p>
+    Deception asks a better question:
+    <strong>“How do we make attackers expose themselves?”</strong>
+</p>
+
+<hr />
+
+<h2>Why Deception Is a Major Trend in 2025</h2>
+
+<p>
+    In modern environments:
+</p>
+
+<ul>
+    <li>Attackers assume they are already inside</li>
+    <li>Zero Trust limits movement but doesn’t stop initial access</li>
+    <li>Detection speed matters more than prevention alone</li>
+</ul>
+
+<p>
+    Deception works because:
+</p>
+
+<ul>
+    <li>Legitimate users never interact with decoys</li>
+    <li>Any interaction is suspicious by default</li>
+    <li>False positives are extremely rare</li>
+</ul>
+
+<p>
+    Simply put:
+    <strong>If someone touches your honeypot, they’re not a real user.</strong>
+</p>
+
+<hr />
+
+<h2>Deception Stack for This Guide (All Free)</h2>
+
+<p>
+    In this guide, I’ll walk through the exact setup I used:
+</p>
+
+<ul>
+    <li><strong>Canarytokens</strong> – lightweight, cloud-based tripwires</li>
+    <li><strong>OpenCanary</strong> – an open-source honeypot daemon</li>
+</ul>
+
+<p>
+    No malware. No exploitation.
+    Just smart traps that work.
+</p>
+
+<hr />
+
+<h2>Step 1: Deploying Canarytokens (The Simplest Honeypot)</h2>
+
+<h3>What Are Canarytokens?</h3>
+
+<p>
+    Canarytokens are
+    <strong>unique digital tripwires</strong>
+    that alert you the moment they are accessed.
+</p>
+
+<p>
+    They can be embedded in:
+</p>
+
+<ul>
+    <li>Documents</li>
+    <li>AWS access keys</li>
+    <li>DNS records</li>
+    <li>URLs</li>
+</ul>
+
+<p>
+    If someone opens or uses them, you receive an alert immediately.
+</p>
+
+<hr />
+
+<h3>Canarytoken in a Word Document</h3>
+
+<p>
+    This is one of the easiest ways to detect:
+</p>
+
+<ul>
+    <li>Internal snooping</li>
+    <li>Post-compromise exploration</li>
+    <li>Attackers searching for sensitive data</li>
+</ul>
+
+<p>
+    How I set it up:
+</p>
+
+<ol>
+    <li>Create a Microsoft Word Canarytoken</li>
+    <li>Download the generated document</li>
+    <li>Rename it to something realistic and tempting</li>
+</ol>
+
+<p>
+    Example filenames:
+</p>
+
+<ul>
+    <li>HR_Salaries_2025.docx</li>
+    <li>Cloud_Credentials.docx</li>
+    <li>Finance_Backup_Q1.docx</li>
+</ul>
+
+<hr />
+
+<h3>Where to Place the Canarytoken Document</h3>
+
+<p>
+    The file should be placed
+    <strong>where attackers look, but users don’t</strong>.
+</p>
+
+<p>
+    Ideal locations include:
+</p>
+
+<ul>
+    <li>Old or archived shared folders</li>
+    <li>Legacy infrastructure directories</li>
+    <li>Backup or migration-related locations</li>
+</ul>
+
+<p>
+    Example realistic path:
+</p>
+
+<pre><code>\\backup-nas\legacy-systems\HR_Salaries_2025.docx</code></pre>
+
+<p>
+    This works because:
+</p>
+
+<ul>
+    <li>Attackers actively enumerate shared folders</li>
+    <li>“Legacy” implies valuable but outdated data</li>
+    <li>Legitimate users rarely access these paths</li>
+</ul>
+
+<p>
+    <strong>Rule of thumb:</strong>
+    If a real user might open the file, it’s in the wrong place.
+</p>
+
+<hr />
+
+<h3>Canarytoken as a Fake AWS Key</h3>
+
+<p>
+    Attackers aggressively hunt for cloud credentials.
+</p>
+
+<p>
+    Canarytokens allows you to generate a
+    <strong>fake AWS access key</strong>
+    that alerts you the moment it’s used.
+</p>
+
+<p>
+    This is one of the
+    <strong>highest-signal deception techniques available in 2025</strong>.
+</p>
+
+<hr />
+
+<h2>Step 2: Deploying OpenCanary (Your First “Smart” Honeypot)</h2>
+
+<h3>What Is OpenCanary?</h3>
+
+<p>
+    OpenCanary is an
+    <strong>open-source, low-interaction honeypot</strong>
+    that emulates vulnerable services.
+</p>
+
+<p>
+    It can pretend to be:
+</p>
+
+<ul>
+    <li>SSH server</li>
+    <li>FTP service</li>
+    <li>SMB / NAS device</li>
+    <li>HTTP service</li>
+</ul>
+
+<p>
+    Every interaction is logged.
+</p>
+
+<hr />
+
+<h3>Installing OpenCanary</h3>
+
+<p>
+    I deployed this on a small Linux VM
+    (Ubuntu 24.04 works perfectly):
+</p>
+
+<pre><code>sudo apt update
+sudo apt install python3-pip -y
+pip3 install opencanary
+opencanaryd --copyconfig</code></pre>
+
+<p>
+    Full installation details are available in the official
+    <a href="https://github.com/thinkst/opencanary?tab=readme-ov-file#installation-on-ubuntu" target="_blank"
+        rel="noopener noreferrer">
+        OpenCanary GitHub repository
+    </a>.
+</p>
+
+<hr />
+
+<h3>Configuring OpenCanary as a Vulnerable NAS</h3>
+
+<p>
+    Attackers love NAS devices, they often store backups and sensitive data.
+</p>
+
+<p>
+    I configured OpenCanary to appear as a NAS by enabling SMB:
+</p>
+
+<pre><code>"smb.enabled": true,
+"smb.port": 445,
+"smb.domain": "WORKGROUP",
+"smb.server_name": "backup-nas"</code></pre>
+
+<p>
+    On the network, this appears as:
+    <strong>backup-nas</strong>
+</p>
+
+<p>
+    No real files. No real risk.
+</p>
+
+<hr />
+
+<h3>Starting the Honeypot</h3>
+
+<pre><code>opencanaryd --start</code></pre>
+
+<p>
+    At this point, your fake NAS is live.
+</p>
+
+<hr />
+
+<h2>When the Attacker Bites - Reading the Logs</h2>
+
+<p>
+    Honeypot logs are different from normal logs.
+</p>
+
+<p>
+    There’s only one real question:
+    <strong>Why is someone touching this?</strong>
+</p>
+
+<pre><code>{
+  "dst_port": 445,
+  "service": "smb",
+  "src_host": "185.xxx.xxx.xxx",
+  "utc_time": "2025-03-18T11:42:21Z"
+}</code></pre>
+
+<p>
+    In a real SOC, this alert is treated as
+    <strong>high confidence by default</strong>.
+</p>
+
+<hr />
+
+<h2>Important Note on Responsible Use</h2>
+
+<p>
+    Deception tools should only be deployed in environments you
+    <strong>own or are authorised to test</strong>.
+</p>
+
+<p>
+    They are designed for detection and visibility, not surveillance or entrapment.
+</p>
+
+<hr />
+<h2>Free Cloud Hosting for Deception Labs (Best Choice in 2025)</h2>
+
+<h3>Oracle Cloud Free Tier</h3>
+
+<p>
+    For hands-on deception engineering and honeypot practice I really recommended the
+    <strong>Oracle Cloud Free Tier</strong>. Best option for beginners. GitHub is also the best option for beginners.
+</p>
+
+<p>
+    Oracle offers a <strong>free-forever tier</strong> that is more than sufficient
+    for running OpenCanary and related security tooling.
+</p>
+
+<h4>What You Get for Free</h4>
+
+<ul>
+    <li>1-2 Linux virtual machines</li>
+    <li>Public IP address</li>
+    <li>Enough CPU and memory for OpenCanary</li>
+    <li>No time limit (unlike most trials)</li>
+</ul>
+
+<h4>Why SOC Learners Love It</h4>
+
+<ul>
+    <li>Public exposure means real internet scanning traffic</li>
+    <li>Perfect for honeypots and deception tools</li>
+    <li>No licensing or infrastructure cost</li>
+</ul>
+
+<h4>Common Use Cases</h4>
+
+<ul>
+    <li>OpenCanary NAS / SMB honeypot</li>
+    <li>SSH honeypot</li>
+    <li>Canarytoken callbacks (documents, URLs, DNS)</li>
+</ul>
+
+<h4>Free Alternatives (Also Valid)</h4>
+
+<ul>
+    <li>Google Cloud Free Tier (limited)</li>
+    <li>AWS Free Tier (12 months)</li>
+    <li>Azure Free Tier (trial-based)</li>
+</ul>
+
+<p>
+    For long-term learning and experimentation,
+    <strong>Oracle Cloud is the easiest and most sustainable option</strong>.
+</p>
+
+<hr />
+
+<h2>Safe Practice Lab (Recommended Setup)</h2>
+
+<p>
+    Below is a realistic beginner-friendly lab that mirrors
+    how deception is used in real SOC environments.
+</p>
+
+<pre><code>[Oracle Free VM]
+   ├── OpenCanary (SMB / NAS)
+   ├── Fake share: legacy-systems
+   │      └── HR_Salaries_2025.docx (Canarytoken)
+   └── Public IP exposed
+
+[Free Domain]
+   └── legacy-backup.tk
+        └── Used in Canarytoken URLs
+</code></pre>
+
+<p>
+    This setup gives you:
+</p>
+
+<ul>
+    <li>Real internet traffic from automated scanners</li>
+    <li>High-confidence deception alerts</li>
+    <li>Zero licensing or hosting costs</li>
+    <li>Real SOC-style investigation experience</li>
+</ul>
+
+<p>
+    Every alert generated by this lab has meaning,
+    because legitimate users should never interact with these assets.
+</p>
+
+<hr />
+
+<h2>What <em>Not</em> to Do (Very Important)</h2>
+
+<p>
+    Deception tools are powerful, but they must be used responsibly.
+</p>
+
+<p><strong>Do NOT:</strong></p>
+
+<ul>
+    <li>Capture or store real credentials</li>
+    <li>Imitate real companies or brands</li>
+    <li>Deploy honeypots on school or work networks without permission</li>
+    <li>Add exploits, malware, or active attack code</li>
+</ul>
+
+<p>
+    Your deception lab should always be:
+</p>
+
+<ul>
+    <li>Detection-only</li>
+    <li>Read-only</li>
+    <li>Passive</li>
+</ul>
+
+<p>
+    When deployed correctly, deception provides
+    <strong>early detection with minimal risk</strong>,
+    making it one of the most effective defensive techniques in 2025.
+</p>
+
+
+<h2>Final Thoughts</h2>
+
+<p>
+    In 2025, security isn’t just about stronger walls.
+</p>
+
+<p>
+    It’s about smarter traps.
+</p>
+
+<p>
+    Prevention tries to stop attackers,
+    <strong>deception lets them identify themselves.</strong>
+</p>
+<div style="
+    background: #0f172a;
+    padding: 20px 24px;
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-family: Arial, Helvetica, sans-serif;
+">
+    <p style="
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+    ">
+        <strong style="color: #ffffff;">
+            Written by Supun Hasanka
+        </strong><br />
+        Cybersecurity Researcher | SOC Operations &amp; Malware Analysis
+    </p>
+</div>
