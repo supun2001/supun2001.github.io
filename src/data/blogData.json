@@ -28,5 +28,15 @@
         "category": "Cybersecurity",
         "image": "/assets/images/id3.png",
         "thumbnail": "/assets/thumbnails/id3.png"
+    },
+    {
+        "id": 4,
+        "title": "Hybrid Pentesting: Why Recon Is the First Thing AI Should Touch",
+        "excerpt": "Learn how modern pentesters use agentic AI to automate reconnaissance without triggering defenses. This article breaks down how AI agents map attack surfaces, how to throttle them to avoid WAF detection, and why a human-in-the-loop workflow remains essential for effective and ethical pentesting in 2025.",
+        "contentFile": "/blog-content/ai-recon.html",
+        "date": "Dec 27, 2025",
+        "category": "Penetration Testing",
+        "image": "/assets/images/id4.png",
+        "thumbnail": "/assets/thumbnails/id4.png"
     }
 ]
