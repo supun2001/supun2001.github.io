@@ -1,0 +1,329 @@
+<h2>API Penetration Testing: Hunting for “Zombie” Endpoints</h2>
+
+<p>
+    In 2025, APIs are no longer just a feature,
+    they are the <strong>primary attack surface</strong>
+    for modern applications.
+</p>
+
+<p>
+    One of the most dangerous API risks today isn’t cutting-edge zero-days,
+    but something far more boring:
+    <strong>forgotten, legacy endpoints that never died</strong>.
+</p>
+
+<p>
+    These are commonly known as <strong>“Zombie APIs”</strong>.
+</p>
+
+<hr />
+
+<h2>What Are Zombie APIs?</h2>
+
+<p>
+    A Zombie API is an endpoint that:
+</p>
+
+<ul>
+    <li>Belongs to an older API version (v1, v2)</li>
+    <li>Is no longer documented</li>
+    <li>Is still reachable in production</li>
+    <li>Lacks modern security controls</li>
+</ul>
+
+<p>
+    While teams focus on securing <code>/v3</code> or <code>/v4</code>,
+    older versions often remain deployed
+    <strong>unchanged and unmonitored</strong>.
+</p>
+
+<p>
+    Attackers love these endpoints because:
+</p>
+
+<ul>
+    <li>No one is watching them</li>
+    <li>Auth logic is outdated</li>
+    <li>Authorization checks are weaker</li>
+    <li>Rate limits are often missing</li>
+</ul>
+
+<hr />
+
+<h2>Why Zombie APIs Are a 2025 Problem</h2>
+
+<p>
+    Modern API stacks evolve fast,
+    but <strong>decommissioning is slow</strong>.
+</p>
+
+<p>
+    Common reasons Zombie APIs survive:
+</p>
+
+<ul>
+    <li>Backward compatibility for mobile apps</li>
+    <li>Legacy integrations with partners</li>
+    <li>Fear of breaking production traffic</li>
+    <li>Poor asset inventory</li>
+</ul>
+
+<p>
+    Security teams often assume:
+</p>
+
+<p>
+    <em>“Nobody knows about v1 anymore.”</em>
+</p>
+
+<p>
+    Attackers do.
+</p>
+
+<hr />
+
+<h2>Tooling: Postman + Burp Suite Professional</h2>
+
+<p>
+    Zombie API hunting does not require exotic tools.
+</p>
+
+<p>
+    A modern workflow usually combines:
+</p>
+
+<ul>
+    <li><strong>Postman</strong> for structured API testing</li>
+    <li><strong>Burp Suite Professional</strong> for interception and fuzzing</li>
+</ul>
+
+<p>
+    Postman helps understand API behavior.
+    Burp reveals how the backend truly responds.
+</p>
+
+<hr />
+
+<h2>The Core Technique: Version Fuzzing</h2>
+
+<p>
+    One of the simplest, and most effective,
+    techniques is <strong>API version fuzzing</strong>.
+</p>
+
+<p>
+    Example:
+</p>
+
+<pre><code>/api/v3/login</code></pre>
+
+<p>
+    Change it to:
+</p>
+
+<pre><code>/api/v1/login
+/api/v2/login
+/api/v1/auth/login</code></pre>
+
+<p>
+    What you are testing:
+</p>
+
+<ul>
+    <li>Does the endpoint still exist?</li>
+    <li>Does it enforce authentication?</li>
+    <li>Does it apply the same authorization rules?</li>
+</ul>
+
+<p>
+    Many organizations upgrade logic in <code>/v3</code>
+    but forget to patch <code>/v1</code>.
+</p>
+
+<hr />
+
+<h2>How Zombie APIs Bypass Modern Security</h2>
+
+<p>
+    New API versions often include:
+</p>
+
+<ul>
+    <li>Stronger JWT validation</li>
+    <li>Fine-grained RBAC</li>
+    <li>Improved rate limiting</li>
+    <li>Better input validation</li>
+</ul>
+
+<p>
+    Older versions frequently lack:
+</p>
+
+<ul>
+    <li>Object-level authorization</li>
+    <li>Consistent permission checks</li>
+    <li>Context-aware access control</li>
+</ul>
+
+<p>
+    This leads directly to one of the most critical API flaws in 2025:
+    <strong>BOLA</strong>.
+</p>
+
+<hr />
+
+<h2>The 2025 Standard: Testing for BOLA</h2>
+
+<p>
+    <strong>BOLA (Broken Object Level Authorization)</strong>
+    occurs when an API allows users to access objects
+    they do not own.
+</p>
+
+<p>
+    Example:
+</p>
+
+<pre><code>GET /api/v1/orders/12345</code></pre>
+
+<p>
+    If changing the ID grants access to another user’s data,
+    the API is vulnerable.
+</p>
+
+<p>
+    Zombie APIs are especially prone to BOLA because:
+</p>
+
+<ul>
+    <li>They predate strict authorization models</li>
+    <li>They trust user-supplied identifiers</li>
+    <li>They assume upstream validation</li>
+</ul>
+
+<hr />
+
+<h2>Practical Testing Workflow</h2>
+
+<h3>Step 1: Enumerate API Versions</h3>
+
+<ul>
+    <li>Review mobile app traffic</li>
+    <li>Check JavaScript bundles</li>
+    <li>Search archived documentation</li>
+</ul>
+
+<h3>Step 2: Replay Requests</h3>
+
+<ul>
+    <li>Send valid requests to older versions</li>
+    <li>Observe differences in responses</li>
+    <p>Example:</p>
+    <pre><code>GET /api/v3/orders/12345 </code></pre>
+    to
+    <pre><code>GET /api/v1/orders/12345 # Change to the v1 endpoint</code></pre>
+
+</ul>
+
+<h3>Step 3: Test Object Access</h3>
+
+<ul>
+    <li>Modify object IDs</li>
+    <li>Test cross-user access</li>
+</ul>
+
+<h3>Step 4: Compare with Latest Version</h3>
+
+<ul>
+    <li>Identify missing controls</li>
+    <li>Document security regression</li>
+</ul>
+
+<hr />
+
+<h2>Why This Still Works in Mature Organizations</h2>
+
+<p>
+    Even security-mature companies struggle with:
+</p>
+
+<ul>
+    <li>API sprawl</li>
+    <li>Microservice complexity</li>
+    <li>Version lifecycle management</li>
+</ul>
+
+<p>
+    Zombie APIs don’t look dangerous,
+    until someone checks them.
+</p>
+
+<hr />
+
+<h2>What Blue Teams Should Do</h2>
+
+<p>
+    Defenders should:
+</p>
+
+<ul>
+    <li>Maintain a live API inventory</li>
+    <li>Deprecate unused versions aggressively</li>
+    <li>Apply authorization consistently across versions</li>
+    <li>Monitor access to legacy endpoints</li>
+</ul>
+
+<p>
+    An API that “shouldn’t be used” but still works
+    <strong>will be used</strong>.
+</p>
+
+<hr />
+
+<h2>Final Thoughts</h2>
+
+<p>
+    API hacking in 2025 isn’t about breaking crypto
+    or bypassing authentication.
+</p>
+
+<p>
+    It’s about finding:
+</p>
+
+<p>
+    <strong>What the organization forgot.</strong>
+</p>
+
+<p>
+    Zombie APIs are quiet.
+    They don’t alert.
+    They don’t log loudly.
+</p>
+
+<p>
+    That’s exactly why they matter.
+</p>
+
+<hr />
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid #e0e0e0;" />
+
+<div style="
+    background: #0f172a;
+    padding: 20px 24px;
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-family: Arial, Helvetica, sans-serif;
+">
+    <p style="
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+    ">
+        <strong style="color: #ffffff;">
+            Written by Supun Hasanka
+        </strong><br />
+        Cybersecurity Researcher | SOC Operations &amp; Malware Analysis
+    </p>
+</div>

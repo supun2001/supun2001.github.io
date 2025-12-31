@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "The $0 AI-Driven SOC: Building a Modern Blue Team with Wazuh",
-        "excerpt": "Learn how to build a fully functional Security Operations Center in 2025 using Wazuh, open-source tools, and a local LLM - without expensive SIEM licenses.",
+        "excerpt": "Think you need expensive SIEM tools to run a real SOC? Think again. This article walks through how to build a practical, AI-assisted Security Operations Center using Wazuh, open-source tools, and a local LLM, proving that modern blue teams don’t need massive budgets to be effective in 2025.",
         "contentFile": "/blog-content/building-a-0-soc.html",
         "date": "Dec 18, 2025",
         "category": "Cybersecurity",
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "title": "Writing High-Fidelity YARA Rules for AI-Era Ransomware (2025)",
-        "excerpt": "Traditional hash-based malware detection no longer works in 2025. This article explains how to write high-fidelity YARA rules that detect malware capabilities instead of static signatures, using a real-world case study of the AquaShell backdoor linked to recent Cisco-related attacks. Learn how modern SOC teams adapt YARA for AI-driven, polymorphic threats.",
+        "excerpt": "Hashes and static signatures don’t stand a chance against AI-generated malware anymore. In this post, I break down how modern analysts write high-fidelity YARA rules that focus on behavior, not appearances, using a real 2025 backdoor case study to show how detection still works in the age of polymorphic threats.",
         "contentFile": "/blog-content/yara.html",
         "date": "Dec 22, 2025",
         "category": "Cybersecurity",
@@ -22,7 +22,7 @@
     {
         "id": 3,
         "title": "Smart Honeypot: Building a Modern Deception Engineering Lab",
-        "excerpt": "Learn how to build a modern deception engineering lab using Canarytokens and OpenCanary - two of the most popular open-source honeypots in 2025. This article explains how to deploy these tools and use them to detect and respond to attacks in real-time.",
+        "excerpt": "Deception engineering is no longer just a research topic, it’s a practical defensive strategy. This article shows how to build a simple but powerful honeypot lab using Canarytokens and OpenCanary, and how these tools can help detect attackers early and respond in real time.",
         "contentFile": "/blog-content/smart_honeypot.html",
         "date": "Dec 25, 2025",
         "category": "Cybersecurity",
@@ -32,11 +32,21 @@
     {
         "id": 4,
         "title": "Hybrid Pentesting: Why Recon Is the First Thing AI Should Touch",
-        "excerpt": "Learn how modern pentesters use agentic AI to automate reconnaissance without triggering defenses. This article breaks down how AI agents map attack surfaces, how to throttle them to avoid WAF detection, and why a human-in-the-loop workflow remains essential for effective and ethical pentesting in 2025.",
+        "excerpt": "AI agents are great at gathering information, but dangerous when left unchecked. In this post, I explore how pentesters use AI for reconnaissance the smart way: automating surface mapping, throttling agents to avoid WAFs, and keeping humans in control of the final attack decisions.",
         "contentFile": "/blog-content/ai-recon.html",
         "date": "Dec 27, 2025",
         "category": "Penetration Testing",
         "image": "/assets/images/id4.png",
         "thumbnail": "/assets/thumbnails/id4.png"
+    },
+    {
+        "id": 5,
+        "title": "API Penetration Testing: Hunting for “Zombie” Endpoints",
+        "excerpt": "Some of the most dangerous API vulnerabilities aren’t new, they’re forgotten. This article dives into how attackers find old, unpatched “Zombie” API endpoints, test them for BOLA flaws, and why these legacy paths remain one of the most overlooked attack vectors in 2025.",
+        "contentFile": "/blog-content/zombie-endpoint.html",
+        "date": "Dec 31, 2025",
+        "category": "Penetration Testing",
+        "image": "/assets/images/id5.png",
+        "thumbnail": "/assets/thumbnails/id5.png"
     }
 ]
