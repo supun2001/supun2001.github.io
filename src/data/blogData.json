@@ -48,5 +48,15 @@
         "category": "Penetration Testing",
         "image": "/assets/images/id5.png",
         "thumbnail": "/assets/thumbnails/id5.png"
+    },
+    {
+        "id": 6,
+        "title": "Cloud Privilege Escalation: The “Identity” Attack Path",
+        "excerpt": "In 2025, cloud breaches rarely start with a zero-day. Instead, they start with something much quieter: a misconfigured identity. In modern cloud environments, identity is the perimeter. If an attacker can abuse permissions, they don’t need malware, exploits, or infrastructure bugs.",
+        "contentFile": "/blog-content/attack-path.html",
+        "date": "Jan 9, 2026",
+        "category": "Penetration Testing",
+        "image": "/assets/images/id6.png",
+        "thumbnail": "/assets/thumbnails/id6.png"
     }
 ]

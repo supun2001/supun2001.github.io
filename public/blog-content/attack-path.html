@@ -1,0 +1,374 @@
+<h2>Cloud Privilege Escalation: The “Identity” Attack Path</h2>
+
+<p>
+    In 2025, cloud breaches rarely start with a zero-day.
+</p>
+
+<p>
+    Instead, they start with something much quieter:
+    <strong>a misconfigured identity</strong>.
+</p>
+
+<p>
+    In modern cloud environments, identity <em>is</em> the perimeter.
+    If an attacker can abuse permissions, they don’t need malware,
+    exploits, or infrastructure bugs.
+</p>
+
+<p>
+    This article breaks down how cloud privilege escalation actually
+    happens in AWS and Azure, and why
+    <strong>identity misconfigurations are the fastest path to admin</strong>.
+</p>
+
+<hr />
+
+<h2>The Shift: From Network Attacks to Identity Attacks</h2>
+
+<p>
+    Traditional security focused on:
+</p>
+
+<ul>
+    <li>Firewalls</li>
+    <li>Network segmentation</li>
+    <li>Exposed services</li>
+</ul>
+
+<p>
+    Cloud-native environments flipped the model.
+</p>
+
+<p>
+    Today, access is controlled by:
+</p>
+
+<ul>
+    <li>IAM roles</li>
+    <li>Policies</li>
+    <li>Service permissions</li>
+    <li>Trust relationships</li>
+</ul>
+
+<p>
+    If identity is misconfigured, everything behind it is exposed,
+    even if the network is “secure.”
+</p>
+
+<hr />
+
+<h2>What Is Cloud Privilege Escalation?</h2>
+
+<p>
+    Cloud privilege escalation occurs when a user or role:
+</p>
+
+<ul>
+    <li>Starts with limited permissions</li>
+    <li>Finds unintended access paths</li>
+    <li>Chains permissions together</li>
+    <li>Ends with elevated privileges</li>
+</ul>
+
+<p>
+    The key insight:
+</p>
+
+<p>
+    <strong>No single permission looks dangerous on its own.</strong>
+</p>
+
+<p>
+    The danger appears when permissions are combined.
+</p>
+
+<hr />
+
+<h2>Common Entry Point: “Read-Only” Access</h2>
+
+<p>
+    Many cloud incidents begin with what looks harmless:
+</p>
+
+<ul>
+    <li>A read-only IAM user</li>
+    <li>A compromised CI/CD token</li>
+    <li>An exposed cloud credential</li>
+    <li>A leaked access key in a repo</li>
+</ul>
+
+<p>
+    Teams often assume:
+</p>
+
+<p>
+    <em>“It’s only read access, there’s nothing they can do.”</em>
+</p>
+
+<p>
+    That assumption is wrong.
+</p>
+
+<hr />
+
+<h2>Why Read Permissions Are Dangerous</h2>
+
+<p>
+    Read access enables reconnaissance.
+</p>
+
+<p>
+    With enough visibility, an attacker can:
+</p>
+
+<ul>
+    <li>Map IAM roles and policies</li>
+    <li>Identify overly permissive roles</li>
+    <li>Discover trust relationships</li>
+    <li>Find services that can assume other roles</li>
+</ul>
+
+<p>
+    This is where cloud attacks differ from traditional pentesting.
+</p>
+
+<p>
+    <strong>The attack surface is logical, not technical.</strong>
+</p>
+
+<hr />
+
+<h2>Methodology: Mapping IAM Like an Attacker</h2>
+
+<p>
+    A real-world cloud privilege escalation workflow follows
+    a predictable pattern.
+</p>
+
+<h3>Step 1: Enumerate Identity Permissions</h3>
+
+<p>
+    The goal is to answer:
+</p>
+
+<ul>
+    <li>Who am I?</li>
+    <li>What can I see?</li>
+    <li>What services can I interact with?</li>
+</ul>
+
+<p>
+    Even limited permissions often allow attackers to
+    <strong>list roles, policies, and attached permissions</strong>.
+</p>
+
+<hr />
+
+<h3>Step 2: Identify Privilege Escalation Paths</h3>
+
+<p>
+    Attackers look for permissions that enable:
+</p>
+
+<ul>
+    <li>Role assumption</li>
+    <li>Policy modification</li>
+    <li>Credential creation</li>
+    <li>Service impersonation</li>
+</ul>
+
+<p>
+    Individually, these permissions may seem acceptable.
+</p>
+
+<p>
+    Combined, they become an escalation chain.
+</p>
+
+<hr />
+
+<h3>Step 3: Abuse Trust Relationships</h3>
+
+<p>
+    Cloud environments rely heavily on trust:
+</p>
+
+<ul>
+    <li>Services trusting roles</li>
+    <li>Roles trusting other roles</li>
+    <li>Cross-account access</li>
+</ul>
+
+<p>
+    If a role trusts something it shouldn’t,
+    attackers can pivot without exploiting a single vulnerability.
+</p>
+
+<hr />
+
+<h2>Scenario: From Read-Only to Administrator</h2>
+
+<p>
+    A common escalation path looks like this:
+</p>
+
+<ul>
+    <li>Start with read-only IAM access</li>
+    <li>Discover a role with broader permissions</li>
+    <li>Identify a service allowed to assume that role</li>
+    <li>Trigger the service in an unintended way</li>
+    <li>Gain access under a more powerful identity</li>
+</ul>
+
+<p>
+    No exploits.
+    No malware.
+    Just permissions behaving exactly as configured.
+</p>
+
+<hr />
+
+<h2>Tooling: Pacu (AWS Exploitation Framework)</h2>
+
+<p>
+    Manually mapping cloud permissions is slow and error-prone.
+</p>
+
+<p>
+    This is where tools like <strong>Pacu</strong> come in.
+</p>
+
+<p>
+    Pacu helps security teams and attackers alike by:
+</p>
+
+<ul>
+    <li>Enumerating IAM permissions</li>
+    <li>Identifying known escalation paths</li>
+    <li>Mapping role trust relationships</li>
+    <li>Highlighting risky configurations</li>
+</ul>
+
+<p>
+    The real value of Pacu is not automation,
+    it’s <strong>visibility</strong>.
+</p>
+
+<hr />
+
+<h2>Why These Attacks Are Hard to Detect</h2>
+
+<p>
+    Identity-based attacks often:
+</p>
+
+<ul>
+    <li>Use legitimate APIs</li>
+    <li>Appear as normal cloud activity</li>
+    <li>Generate no obvious alerts</li>
+    <li>Blend into daily operations</li>
+</ul>
+
+<p>
+    From a logging perspective, nothing looks “exploited.”
+</p>
+
+<p>
+    Everything is technically working as designed.
+</p>
+
+<hr />
+
+<h2>What Blue Teams Get Wrong</h2>
+
+<p>
+    Common defensive mistakes include:
+</p>
+
+<ul>
+    <li>Overly broad IAM roles</li>
+    <li>Unused permissions left in place</li>
+    <li>Unreviewed trust relationships</li>
+    <li>No continuous IAM auditing</li>
+</ul>
+
+<p>
+    Security teams often focus on:
+</p>
+
+<p>
+    <em>“Who can access what?”</em>
+</p>
+
+<p>
+    But attackers focus on:
+</p>
+
+<p>
+    <strong>“Who can become who?”</strong>
+</p>
+
+<hr />
+
+<h2>Defensive Takeaways</h2>
+
+<p>
+    To reduce identity-based privilege escalation:
+</p>
+
+<ul>
+    <li>Apply least privilege aggressively</li>
+    <li>Audit IAM roles continuously</li>
+    <li>Review trust relationships regularly</li>
+    <li>Monitor role assumption events</li>
+    <li>Remove unused permissions</li>
+</ul>
+
+<p>
+    In the cloud, identity sprawl is attack surface.
+</p>
+
+<hr />
+
+<h2>Final Thoughts</h2>
+
+<p>
+    Cloud security in 2025 is not about patching servers.
+</p>
+
+<p>
+    It’s about controlling identity.
+</p>
+
+<p>
+    If attackers can see your permissions,
+    they can often see their path to admin.
+</p>
+
+<p>
+    <strong>No zero-day required.</strong><br />
+    <strong>Just one misconfigured role.</strong>
+</p>
+
+<hr />
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid #e0e0e0;" />
+
+<div style="
+    background: #0f172a;
+    padding: 20px 24px;
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-family: Arial, Helvetica, sans-serif;
+">
+    <p style="
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+    ">
+        <strong style="color: #ffffff;">
+            Written by Supun Hasanka
+        </strong><br />
+        Cybersecurity Researcher | SOC Operations &amp; Malware Analysis
+    </p>
+</div>
