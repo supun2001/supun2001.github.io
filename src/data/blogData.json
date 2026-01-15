@@ -58,5 +58,15 @@
         "category": "Penetration Testing",
         "image": "/assets/images/id6.png",
         "thumbnail": "/assets/thumbnails/id6.png"
+    },
+    {
+        "id": 7,
+        "title": "Reversing Rust Malware: A Ghidra 2025 Guide",
+        "excerpt": "Rust is quickly becoming the language of choice for modern malware authors in 2025 not for speed, but for how difficult it is to reverse engineer. This article breaks down why traditional analysis tools struggle with Rust binaries and how modern Ghidra plugins help analysts recover structure, behavior, and critical intelligence like command-and-control infrastructure.",
+        "contentFile": "/blog-content/reverse-eng.html",
+        "date": "Jan 15, 2026",
+        "category": "Malware Analysis",
+        "image": "/assets/images/id7.png",
+        "thumbnail": "/assets/thumbnails/id7.png"
     }
 ]
