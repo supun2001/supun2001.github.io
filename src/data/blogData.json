@@ -68,5 +68,15 @@
         "category": "Malware Analysis",
         "image": "/assets/images/id7.png",
         "thumbnail": "/assets/thumbnails/id7.png"
+    },
+    {
+        "id": 8,
+        "title": "Unpacking Mobile Apps: Bypassing SSL Pinning on iOS 19",
+        "excerpt": "With multiple WebKit-related threats making headlines in 2025, mobile application security is back in focus. For defenders and researchers, understanding how mobile apps protect their network traffic is now a critical skill.",
+        "contentFile": "/blog-content/mobile-apps.html",
+        "date": "Jan 27, 2026",
+        "category": "Mobile Security",
+        "image": "/assets/images/id8.png",
+        "thumbnail": "/assets/thumbnails/id8.png"
     }
 ]

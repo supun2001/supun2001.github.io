@@ -1,0 +1,288 @@
+<h2>Unpacking Mobile Apps: Bypassing SSL Pinning on iOS 19</h2>
+
+<p>
+    With multiple <strong>WebKit-related threats</strong> making headlines in 2025,
+    mobile application security is back in focus.
+    For defenders and researchers, understanding how mobile apps
+    protect their network traffic is now a critical skill.
+</p>
+
+<p>
+    One of the most common and most misunderstood protections is
+    <strong>SSL pinning</strong>.
+    This article explains how analysts safely study pinned apps on iOS 19
+    in a controlled lab environment.
+</p>
+
+<hr />
+
+<h2>Why SSL Pinning Exists (And Why Analysts Need to Bypass It)</h2>
+
+<p>
+    SSL pinning is designed to prevent attackers from intercepting
+    encrypted traffic, even if they install a malicious root certificate.
+</p>
+
+<p>
+    From a defensive standpoint, SSL pinning helps:
+</p>
+
+<ul>
+    <li>Protect sensitive API traffic</li>
+    <li>Prevent man-in-the-middle attacks</li>
+    <li>Reduce credential and token leakage</li>
+</ul>
+
+<p>
+    However, for <strong>mobile app security testing</strong>,
+    pinning also blocks legitimate analysis:
+</p>
+
+<ul>
+    <li>API behavior validation</li>
+    <li>Authentication flow testing</li>
+    <li>Authorization and access control review</li>
+</ul>
+
+<p>
+    To secure an application, you must first understand how it behaves.
+</p>
+
+<hr />
+
+<h2>The 2025 Mobile Analysis Landscape</h2>
+
+<p>
+    iOS 19 introduced tighter runtime controls, stronger sandboxing,
+    and more aggressive detection of tampering.
+</p>
+
+<p>
+    As a result:
+</p>
+
+<ul>
+    <li>Static analysis alone is no longer enough</li>
+    <li>Runtime instrumentation is essential</li>
+    <li>Older bypass techniques fail silently</li>
+</ul>
+
+<p>
+    Modern mobile analysis relies on <strong>dynamic inspection</strong>
+    rather than patching binaries on disk.
+</p>
+
+<hr />
+
+<h2>Tools of the Trade</h2>
+
+<p>
+    In 2025, most iOS app analysis labs rely on three core components:
+</p>
+
+<ul>
+    <li><strong>Frida</strong> – Dynamic instrumentation framework</li>
+    <li><strong>Objection</strong> – Runtime exploration built on Frida</li>
+    <li><strong>Burp Suite</strong> – Traffic inspection and API testing</li>
+</ul>
+
+<p>
+    These tools allow analysts to observe application behavior
+    without permanently modifying the app.
+</p>
+
+<hr />
+
+<h2>The Lab: Virtualized iOS Devices</h2>
+
+<p>
+    Modern iOS research requires an environment where instrumentation
+    is possible without risking physical devices.
+</p>
+
+<p>
+    Most professional labs use:
+</p>
+
+<ul>
+    <li>Virtualized iOS environments (Corellium or similar)</li>
+    <li>Jailbreak-enabled test devices</li>
+    <li>Isolated network segments</li>
+</ul>
+
+<p>
+    This setup allows safe experimentation while maintaining
+    legal and ethical boundaries.
+</p>
+
+<hr />
+
+<h2>Understanding How SSL Pinning Is Implemented</h2>
+
+<p>
+    Before attempting any bypass, analysts first identify
+    <strong>where pinning occurs</strong>.
+</p>
+
+<p>
+    In iOS apps, pinning is commonly implemented via:
+</p>
+
+<ul>
+    <li>NSURLSession delegate checks</li>
+    <li>Trust evaluation callbacks</li>
+    <li>Embedded certificate hashes</li>
+</ul>
+
+<p>
+    These checks typically execute at runtime,
+    which is exactly where dynamic instrumentation shines.
+</p>
+
+<hr />
+
+<h2>The Technique: Runtime Instrumentation (Conceptual)</h2>
+
+<p>
+    Instead of modifying the app binary, modern analysis focuses on:
+</p>
+
+<ul>
+    <li>Observing trust evaluation logic at runtime</li>
+    <li>Temporarily altering return values in memory</li>
+    <li>Letting the app continue normally afterward</li>
+</ul>
+
+<p>
+    This approach:
+</p>
+
+<ul>
+    <li>Avoids permanent tampering</li>
+    <li>Reduces app crashes</li>
+    <li>Works across app updates</li>
+</ul>
+
+<p>
+    The goal is visibility, not exploitation.
+</p>
+
+<hr />
+
+<h2>Inspecting Traffic in Burp Suite</h2>
+
+<p>
+    Once pinning is neutralized in-memory,
+    the application’s HTTPS traffic becomes visible
+    to interception tools.
+</p>
+
+<p>
+    Analysts can then examine:
+</p>
+
+<ul>
+    <li>Authentication tokens</li>
+    <li>API endpoints and versions</li>
+    <li>Authorization decisions</li>
+    <li>Error handling behavior</li>
+</ul>
+
+<p>
+    This step often reveals logic flaws
+    that static analysis would never catch.
+</p>
+
+<hr />
+
+<h2>Why This Matters for Defenders</h2>
+
+<p>
+    From a blue team perspective, SSL pinning is not a silver bullet.
+</p>
+
+<p>
+    If security relies entirely on pinning:
+</p>
+
+<ul>
+    <li>API authorization flaws remain hidden</li>
+    <li>Broken object access goes unnoticed</li>
+    <li>Backend trust assumptions go untested</li>
+</ul>
+
+<p>
+    Real security comes from:
+</p>
+
+<ul>
+    <li>Strong backend authorization</li>
+    <li>Proper token validation</li>
+    <li>Defense-in-depth design</li>
+</ul>
+
+<hr />
+
+<h2>Legal and Ethical Boundaries</h2>
+
+<p>
+    SSL pinning bypass techniques must only be used:
+</p>
+
+<ul>
+    <li>On applications you own</li>
+    <li>With explicit authorization</li>
+    <li>Inside controlled lab environments</li>
+</ul>
+
+<p>
+    The purpose is security research,
+    not user surveillance or abuse.
+</p>
+
+<hr />
+
+<h2>Final Thoughts</h2>
+
+<p>
+    SSL pinning raises the bar for attackers,
+    but it should never replace real security controls.
+</p>
+
+<p>
+    In 2025, effective mobile security testing means:
+</p>
+
+<ul>
+    <li>Understanding runtime behavior</li>
+    <li>Testing APIs beyond the UI</li>
+    <li>Assuming clients can be inspected</li>
+</ul>
+
+<p>
+    <strong>Trust the server.</strong><br />
+    <strong>Verify everything.</strong>
+</p>
+
+<hr />
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid #e0e0e0;" />
+
+<div style="
+    background: #0f172a;
+    padding: 20px 24px;
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-family: Arial, Helvetica, sans-serif;
+">
+    <p style="
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.5;
+    ">
+        <strong style="color: #ffffff;">
+            Written by Supun Hasanka
+        </strong><br />
+        Cybersecurity Researcher | SOC Operations &amp; Malware Analysis
+    </p>
+</div>
