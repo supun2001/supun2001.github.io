@@ -11,7 +11,7 @@ const Experience = () => {
         {
             company: "Klaynz Technologies",
             role: "Full Stack Developer",
-            period: "Jan 2024 - Feb 2025",
+            period: "Jan 2023 - April 2026",
             description: "Built and maintained full-stack web applications using the MERN stack, developing responsive React.js frontends with efficient state management and data handling, and Node.js/Express APIs for secure data processing. Designed MongoDB schemas, implemented authentication and role-based access, and optimised performance to support scalable, multi-user environments."
         },
         {
