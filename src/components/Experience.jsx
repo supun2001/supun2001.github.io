@@ -3,12 +3,6 @@ import React from 'react';
 const Experience = () => {
     const experienceData = [
         {
-            company: "Belong Studios, USA",
-            role: "Intern Game Developer",
-            period: "Feb 2025 - April 2025",
-            description: "Developed AI-driven enemy behaviour using Unreal Engine 5 and C++, implementing decision-making logic, state machines, and behaviour trees to create responsive and realistic gameplay interactions. Collaborated with designers and developers to integrate AI systems into game environments."
-        },
-        {
             company: "Klaynz Technologies",
             role: "Full Stack Developer",
             period: "Jan 2023 - April 2026",
