@@ -5,7 +5,6 @@ import Home from './components/Home';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 import Footer from './components/Footer';
-import MouseTrail from './components/MouseTrail';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -21,7 +20,6 @@ function App() {
         <Router basename={import.meta.env.BASE_URL}>
             <ScrollToTop />
             <div id="app">
-                <MouseTrail />
                 <Navbar />
                 <Routes>
                     <Route path="/" element={<Home />} />
