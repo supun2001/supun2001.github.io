@@ -21,7 +21,7 @@ const Experience = () => {
             institution: "University of the West of Scotland, UK",
             degree: "M.Sc in Cyber Security",
             period: "2025 - 2026",
-            grade: "Currently Pursuing",
+            grade: "Predicted Distinction",
             description: "Currently pursuing an MSc in Cyber Security with a strong emphasis on practical, real-world security operations and threat mitigation. Gaining hands-on experience in network and system security, malware analysis, and incident response through lab-based simulations of real cyber attacks and defensive scenarios. Actively using industry-standard tools such as Wireshark, Nmap, Metasploit, Burp Suite, Kali Linux, Splunk, and SIEM platforms to perform vulnerability assessment, penetration testing, traffic analysis, and threat detection. Applying cryptography, access control, and secure configuration principles to protect modern IT infrastructures, including cloud and enterprise environments, while working within ethical, legal, and compliance frameworks aligned with industry standards."
         },
         {
