@@ -25,12 +25,12 @@ const Navbar = () => {
                 <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
                     <a href={getLink("#about")} onClick={() => setIsMenuOpen(false)}>About</a>
                     <a href={getLink("#experience")} onClick={() => setIsMenuOpen(false)}>Experience</a>
+                    <a href={getLink("#projects")} onClick={() => setIsMenuOpen(false)}>Projects</a>
                     <Link to="/blog"
                         className={location.pathname.startsWith('/blog') ? 'active' : ''}
                         onClick={() => setIsMenuOpen(false)}>
                         Blog
                     </Link>
-                    {/* <a href="#work" onClick={() => setIsMenuOpen(false)}>Work</a> */}
                     <a href={getLink("#contact")} className="nav-cta" onClick={() => setIsMenuOpen(false)}>Let's Talk</a>
                 </div>
 
