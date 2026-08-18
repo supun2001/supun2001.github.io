@@ -2,15 +2,15 @@ import React from 'react';
 
 const projects = [
     {
-        title: "AI Doc-to-LoRA",
-        category: "Upcoming Research",
+        title: "Niro AI – AI-Driven Doc-to-LoRA Cyber Threat Intelligence",
+        category: "MSc Research Project",
         image: "/assets/projects/ai-doc-to-lora.png",
         imageMode: "contain",
         description: "A dependency-aware candidate zero-day vulnerability analysis system that compares Doc-to-LoRA CTI reasoning with a retrieval-based baseline.",
         industry: "Cyber Security, Threat Intelligence, AI Research",
         platform: "Public CTI + LoRA-style Knowledge Modules + Retrieval Baseline",
         duration: "Research in Progress",
-        link: "/assets/projects/ai-doc-to-lora.png",
+        link: "https://github.com/supun2001/niro_ai",
         action: "View overview"
     },
     {
