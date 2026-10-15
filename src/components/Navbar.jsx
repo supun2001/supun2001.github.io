@@ -25,6 +25,7 @@ const Navbar = () => {
                 <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
                     <a href={getLink("#about")} onClick={() => setIsMenuOpen(false)}>About</a>
                     <a href={getLink("#experience")} onClick={() => setIsMenuOpen(false)}>Experience</a>
+                    <a href={getLink("#certificate")} onClick={() => setIsMenuOpen(false)}>Certificate</a>
                     <a href={getLink("#projects")} onClick={() => setIsMenuOpen(false)}>Projects</a>
                     <Link to="/blog"
                         className={location.pathname.startsWith('/blog') ? 'active' : ''}

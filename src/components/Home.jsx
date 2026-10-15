@@ -3,6 +3,7 @@ import Hero from './Hero';
 import About from './About';
 import Experience from './Experience';
 import Work from './Work';
+import Certificates from './Certificates';
 
 const Home = () => {
     return (
@@ -10,6 +11,7 @@ const Home = () => {
             <Hero />
             <About />
             <Experience />
+            <Certificates />
             <Work />
         </main>
     );
