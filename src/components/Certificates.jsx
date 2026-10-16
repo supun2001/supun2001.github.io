@@ -2,6 +2,20 @@ import React from 'react';
 
 const certificates = [
     {
+        title: 'LLMOps Concepts',
+        date: 'October 16, 2026',
+        dateTime: '2026-10-16',
+        duration: '1 hour',
+        file: 'llmops-concepts'
+    },
+    {
+        title: 'Working with Hugging Face',
+        date: 'October 15, 2026',
+        dateTime: '2026-10-15',
+        duration: '2 hours',
+        file: 'working-with-hugging-face'
+    },
+    {
         title: 'Prompt Engineering with the OpenAI API',
         date: 'October 15, 2026',
         dateTime: '2026-10-15',
@@ -14,6 +28,13 @@ const certificates = [
         dateTime: '2026-10-14',
         duration: '3 hours',
         file: 'working-with-openai-api'
+    },
+    {
+        title: 'Intermediate Python for Developers',
+        date: 'October 14, 2026',
+        dateTime: '2026-10-14',
+        duration: '2 hours',
+        file: 'intermediate-python-for-developers'
     }
 ];
 
