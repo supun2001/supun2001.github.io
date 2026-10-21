@@ -2,6 +2,20 @@ import React from 'react';
 
 const certificates = [
     {
+        title: 'Building AI Applications with Pinecone',
+        date: 'October 21, 2026',
+        dateTime: '2026-10-21',
+        duration: '3 hours',
+        file: 'building-ai-applications-with-pinecone'
+    },
+    {
+        title: 'Introduction to Embeddings with the OpenAI API',
+        date: 'October 19, 2026',
+        dateTime: '2026-10-19',
+        duration: '3 hours',
+        file: 'introduction-to-embeddings-with-the-openai-api'
+    },
+    {
         title: 'LLMOps Concepts',
         date: 'October 16, 2026',
         dateTime: '2026-10-16',
