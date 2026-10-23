@@ -394,32 +394,21 @@ ul {
 }
 
 /* Certificates */
-.certificate-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
+.certificate-list {
+  margin: 0;
+  padding-left: 1.5rem;
+  max-width: 900px;
 }
 
-.certificate-preview {
-  display: block;
-  background: #fff;
+.certificate-list li {
+  padding: 0.75rem 0 0.75rem 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
-.certificate-preview img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.certificate-card a:focus-visible {
-  outline: 3px solid #60a5fa;
-  outline-offset: -3px;
-}
-
-@media (max-width: 680px) {
-  .certificate-grid {
-    grid-template-columns: 1fr;
-  }
+.certificate-list li::marker {
+  color: #60a5fa;
 }
 
 /* About */
