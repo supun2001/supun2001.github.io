@@ -6,7 +6,7 @@ const About = () => {
             <div className="container">
                 <div className="about-content">
                     <h2 className="section-title">About Me</h2>
-                    <p>Innovative and detail-oriented Full Stack Developer with strong experience in web, mobile, and cloud-based application development. Skilled in Python, C#, JavaScript, and Azure, with a background in cybersecurity and DevOps best practices. Passionate about building secure, high-performance software that integrates seamlessly with hardware and delivers real-world impact. Adept at working in agile, cross-functional teams and driving continuous improvement across the development lifecycle.</p>
+                    <p>Software engineer with 3+ years of commercial full-stack experience, direct customer engagement and experience building and deploying production RAG systems. Developed 80+ REST API endpoints and deployed applications on AWS using EC2, S3, RDS and CloudWatch. Brings hands-on experience in AI integration, secure software development, cloud deployment and production troubleshooting to forward deployed engineering. Holds an MSc Cybersecurity with Distinction and a BSc Software Engineering with a 2:1.</p>
                 </div>
             </div>
         </section>
