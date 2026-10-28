@@ -6,7 +6,15 @@ const Experience = () => {
             company: "Klaynz Technologies",
             role: "Full Stack Developer",
             period: "Jul 2023 - April 2026",
-            description: "Built and maintained full-stack web applications using the MERN stack, developing responsive React.js frontends with efficient state management and data handling, and Node.js/Express APIs for secure data processing. Designed MongoDB schemas, implemented authentication and role-based access, and optimised performance to support scalable, multi-user environments."
+            description: "Delivered customer-facing web applications and AI features, working directly with customers to translate requirements into production software.",
+            highlights: [
+                "Built and deployed production retrieval-augmented generation (RAG) systems, integrating LLMs and information retrieval into customer-facing applications.",
+                "Developed backend services using Java, Python and Flask, delivering 80+ REST API endpoints connected to SQL-backed data workflows.",
+                "Deployed and supported applications on AWS EC2, using S3 for storage, RDS for databases and CloudWatch for monitoring and production troubleshooting.",
+                "Implemented JWT and OAuth 2.0 authentication, role-based access control and input validation following OWASP-aware secure coding practices.",
+                "Improved code quality through pytest testing, debugging and peer reviews; maintained reusable backend components and SQL and NoSQL data models.",
+                "Mentored three engineering interns over four months through code reviews, technical guidance and progressively more complex practice projects and production features."
+            ]
         },
         {
             company: "Ministry of Defence Sri Lanka",
@@ -46,6 +54,13 @@ const Experience = () => {
                                     <h3 className="timeline-title">{item.role}</h3>
                                     <h4 className="timeline-subtitle">{item.company}</h4>
                                     <p className="timeline-text">{item.description}</p>
+                                    {item.highlights && (
+                                        <ul className="timeline-text timeline-highlights">
+                                            {item.highlights.map((highlight) => (
+                                                <li key={highlight}>{highlight}</li>
+                                            ))}
+                                        </ul>
+                                    )}
                                 </div>
                             ))}
                         </div>

@@ -624,6 +624,20 @@ ul {
   line-height: 1.6;
 }
 
+.timeline-highlights {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin-top: 1rem;
+}
+
+.timeline-highlights li + li {
+  margin-top: 0.75rem;
+}
+
+.timeline-highlights li::marker {
+  color: #60a5fa;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
