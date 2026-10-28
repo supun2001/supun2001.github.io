@@ -16,6 +16,11 @@ const Hero = () => {
                         <p className="hero-subtitle">
                             I made things, I break things, I fix things.
                         </p>
+                        <a href="#featured-certificate-title" className="hero-certification">
+                            <span className="hero-certification-mark" aria-hidden="true">✦</span>
+                            <span><strong>DataCamp certified</strong><span>AI Engineer for Developers Associate</span></span>
+                            <span aria-hidden="true">↗</span>
+                        </a>
                         <div className="cta-group">
                             <Link to="/blog" className="btn btn-primary">Blog</Link>
                             <a href="#contact" className="btn btn-secondary">Contact Me</a>

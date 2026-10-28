@@ -394,6 +394,125 @@ ul {
 }
 
 /* Certificates */
+.featured-certificate {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  margin-bottom: 3rem;
+  border: 1px solid rgba(96, 165, 250, 0.4);
+  border-radius: 20px;
+  background: linear-gradient(120deg, rgba(59, 130, 246, 0.14), rgba(139, 92, 246, 0.08));
+  box-shadow: 0 16px 60px rgba(59, 130, 246, 0.08);
+}
+
+.certificate-badge {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 50px;
+  background: rgba(96, 165, 250, 0.15);
+  color: #bfdbfe;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.featured-certificate-issuer {
+  margin-top: 1.5rem;
+  color: #a1a1a1;
+  font-weight: 600;
+}
+
+.featured-certificate h3 {
+  margin: 0.5rem 0 1rem;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  scroll-margin-top: calc(var(--nav-height) + 2rem);
+}
+
+.featured-certificate h3 span {
+  display: block;
+  color: #93c5fd;
+}
+
+.certificate-id {
+  margin: 0.5rem 0 1.5rem;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  overflow-wrap: anywhere;
+}
+
+.featured-certificate .btn {
+  display: inline-block;
+}
+
+.certificate-preview {
+  display: block;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.certificate-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.certificate-list-heading {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.hero-certification {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(96, 165, 250, 0.35);
+  border-radius: 12px;
+  background: rgba(59, 130, 246, 0.1);
+  text-align: left;
+  color: #bfdbfe;
+  font-size: 0.8rem;
+}
+
+.hero-certification strong,
+.hero-certification span span {
+  display: block;
+}
+
+.hero-certification strong {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.hero-certification-mark {
+  font-size: 1.6rem;
+}
+
+.hero-certification:hover,
+.certificate-preview:hover {
+  opacity: 0.85;
+}
+
+.hero-certification:focus-visible,
+.featured-certificate a:focus-visible {
+  outline: 2px solid #93c5fd;
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .featured-certificate {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 .certificate-list {
   margin: 0;
   padding-left: 1.5rem;

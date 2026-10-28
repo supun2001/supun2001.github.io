@@ -67,6 +67,20 @@ const Certificates = () => (
                 <h2 id="certificate-title" className="section-title">Certificates</h2>
                 <p className="section-intro">Completed courses and certificates in AI and software development.</p>
             </div>
+            <article className="featured-certificate" aria-labelledby="featured-certificate-title">
+                <div className="featured-certificate-content">
+                    <span className="certificate-badge">Featured certification</span>
+                    <p className="featured-certificate-issuer">DataCamp</p>
+                    <h3 id="featured-certificate-title">AI Engineer for Developers <span>Associate</span></h3>
+                    <p className="certificate-details">Certified <time dateTime="2026-10-28">October 28, 2026</time></p>
+                    <p className="certificate-id">Credential ID: AIEDA0012687371471</p>
+                    <a className="btn btn-primary" href="/certificates/datacamp-ai-engineer-associate.pdf" target="_blank" rel="noopener noreferrer">View certificate (PDF) <span aria-hidden="true">↗</span></a>
+                </div>
+                <a className="certificate-preview" href="/certificates/datacamp-ai-engineer-associate.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Supun Hasanka’s DataCamp AI Engineer for Developers Associate certificate (PDF)">
+                    <img src="/certificates/datacamp-ai-engineer-associate.webp" alt="DataCamp AI Engineer for Developers Associate certificate awarded to Supun Hasanka on October 28, 2026" width="1238" height="711" loading="lazy" />
+                </a>
+            </article>
+            <h3 className="certificate-list-heading">Course certificates</h3>
             <ul className="certificate-list">
                 {certificates.map((certificate) => (
                     <li key={certificate.title}>
