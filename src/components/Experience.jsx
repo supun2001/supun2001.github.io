@@ -4,7 +4,7 @@ const Experience = () => {
     const experienceData = [
         {
             company: "Klaynz Technologies",
-            role: "Full Stack Developer",
+            role: "AI Engineer",
             period: "Jul 2023 - April 2026",
             description: "Delivered customer-facing web applications and AI features, working directly with customers to translate requirements into production software.",
             highlights: [
