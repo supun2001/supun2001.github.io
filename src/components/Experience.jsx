@@ -4,16 +4,19 @@ const Experience = () => {
     const experienceData = [
         {
             company: "Klaynz Technologies",
-            role: "AI Engineer",
+            role: "Forward Deployed Engineer",
             period: "Jul 2023 - April 2026",
-            description: "Delivered customer-facing web applications and AI features, working directly with customers to translate requirements into production software.",
+            description: "Delivered customer-facing software and AI solutions, working directly with customers to understand business needs, define technical requirements and take applications from development into production.",
             highlights: [
+                "Bridged customer discussions and hands-on engineering, translating requirements into practical features.",
+                "Provided clear technical communication to technical and non-technical stakeholders, explaining solution designs, implementation trade-offs and delivery progress.",
+                "Supported technical sales through solution demonstrations, feasibility discussions and explanations of how proposed features could address customer needs.",
                 "Built and deployed production retrieval-augmented generation (RAG) systems, integrating LLMs and information retrieval into customer-facing applications.",
-                "Developed backend services using Java, Python and Flask, delivering 80+ REST API endpoints connected to SQL-backed data workflows.",
-                "Deployed and supported applications on AWS EC2, using S3 for storage, RDS for databases and CloudWatch for monitoring and production troubleshooting.",
-                "Implemented JWT and OAuth 2.0 authentication, role-based access control and input validation following OWASP-aware secure coding practices.",
-                "Improved code quality through pytest testing, debugging and peer reviews; maintained reusable backend components and SQL and NoSQL data models.",
-                "Mentored three engineering interns over four months through code reviews, technical guidance and progressively more complex practice projects and production features."
+                "Developed Java, Python and Flask backend services, delivering 80+ REST API endpoints connected to SQL-backed workflows and application integrations.",
+                "Deployed and supported production applications on AWS EC2, using S3, RDS and CloudWatch to maintain live services and investigate customer-reported issues.",
+                "Implemented JWT, OAuth 2.0, role-based access control and input validation to support secure customer deployments.",
+                "Tested and improved backend services through pytest, debugging and peer reviews, maintaining reusable components and SQL and NoSQL data models.",
+                "Mentored three engineering interns over four months through code reviews, technical guidance and delivery of practice projects and production features."
             ]
         },
         {
